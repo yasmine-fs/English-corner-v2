@@ -1,0 +1,124 @@
+   /* General Page Styling */
+
+
+   body {
+    font-family: "Yeseva One", serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+
+
+  }
+
+  .container-signup {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 900px;
+    margin: 55px auto;
+    padding: 20px;
+  }
+
+  /* Account Type Section */
+  .account-type {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .account-type h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 50px;
+  }
+
+  .account-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+  }
+
+  .account-buttons .btn-account {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  .account-buttons .btn-account img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+
+  .account-buttons .btn-account.active {
+    border-color: #007bff;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+  }
+
+  .account-buttons .btn-account:hover {
+    border-color: #007bff;
+  }
+
+  .account-message {
+    margin-top: 30px;
+    font-size: 1rem;
+    color: #6e6e6e;
+  }
+
+  /* Form Section */
+
+
+  .form-floating-label {
+    position: relative;
+    margin-bottom: 15px;
+  }
+
+  .form-floating-label input {
+    width: 100%;
+    padding-top: 20px;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    background: transparent;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out;
+  }
+
+  .form-floating-label input:focus {
+    border-color: #000000;
+  }
+
+  .form-floating-label label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #aaa;
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
+  }
+
+  .form-floating-label input:focus + label,
+  .form-floating-label input:not(:placeholder-shown) + label {
+    top: 10px;
+    font-size: 12px;
+    color: #000000;
+  }
+
+  .btn-primary {
+    background-color: #D9D9D9; 
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #1D2332;
+  }
