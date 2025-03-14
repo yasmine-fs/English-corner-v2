@@ -19,11 +19,10 @@ class UsersFixture extends TestFixture
     {
         $this->records = [
             [
-                'id_usr' => 1,
+                'id' => 1,
+                'Full_name' => 'Lorem ipsum dolor sit amet',
                 'email' => 'Lorem ipsum dolor sit amet',
-                'full_name' => 'Lorem ipsum dolor sit amet',
                 'password' => 'Lorem ipsum dolor sit amet',
-                'role' => 'Lorem ipsum dolor sit amet',
                 'state' => 'Lorem ipsum dolor sit amet',
             ],
         ];

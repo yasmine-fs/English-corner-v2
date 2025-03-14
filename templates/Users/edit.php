@@ -18,10 +18,10 @@
     </div>
     <div class="row">
         <div class="col-sm-4 m-1">
-            <!-- full_name input -->
+            <!-- Full_name input -->
             <div class="form-outline">
-                <input type="text" name="full_name" class="form-control" />
-                <label class="form-label" for="form8Example1">full_name</label>
+                <input type="text" name="Full_name" class="form-control" />
+                <label class="form-label" for="form8Example1">Full_name</label>
             </div>
         </div>
         <div class="col-sm-4 m-1">
@@ -42,14 +42,6 @@
         </div>
     </div>
     <div class="row">
-         <!-- role input -->
-        <div class="col-sm-4 m-1">
-            <select id="options" name="role" class="form-select">
-                <option value="Easy">admin</option>
-                <option value="Medium">teacher</option>
-                <option value="Hard">student</option>
-            </select>
-        </div>
         <!-- state input -->
         <div class="form-outline">
             <input type="text" name="state" class="form-control" />

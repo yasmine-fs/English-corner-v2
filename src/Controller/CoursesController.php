@@ -33,7 +33,7 @@ class CoursesController extends AppController
      */
     public function view($id = null)
     {
-        $course = $this->Courses->get($id, contain: ['Users', 'Coursestates', 'Reviews', 'Usercourses']);
+        $course = $this->Courses->get($id, contain: ['Users', 'Reviews']);
         $this->set(compact('course'));
     }
 

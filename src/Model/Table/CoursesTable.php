@@ -11,9 +11,6 @@ use Cake\Validation\Validator;
 /**
  * Courses Model
  *
- * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
- * @property \App\Model\Table\ReviewsTable&\Cake\ORM\Association\HasMany $Reviews
- *
  * @method \App\Model\Entity\Course newEmptyEntity()
  * @method \App\Model\Entity\Course newEntity(array $data, array $options = [])
  * @method array<\App\Model\Entity\Course> newEntities(array $data, array $options = [])
@@ -44,11 +41,18 @@ class CoursesTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Users', [
-            'foreignKey' => 'user_id',
+        $this->belongsTo('Category', [
+            'foreignKey' => 'category_id',
             'joinType' => 'INNER',
         ]);
-        $this->hasMany('Reviews', [
+        $this->belongsTo('Teachers', [
+            'foreignKey' => 'teacher_id',
+            'joinType' => 'INNER',
+        ]);
+        $this->hasMany('Chapters', [
+            'foreignKey' => 'course_id',
+        ]);
+        $this->hasMany('Progress', [
             'foreignKey' => 'course_id',
         ]);
     }
@@ -62,37 +66,26 @@ class CoursesTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('category')
-            ->allowEmptyString('category');
+            ->scalar('title')
+            ->maxLength('title', 255)
+            ->requirePresence('title', 'create')
+            ->notEmptyString('title');
 
         $validator
-            ->scalar('name')
-            ->maxLength('name', 255)
-            ->requirePresence('name', 'create')
-            ->notEmptyString('name');
+            ->scalar('description')
+            ->allowEmptyString('description');
 
         $validator
-            ->integer('user_id')
-            ->notEmptyString('user_id');
+            ->nonNegativeInteger('category_id')
+            ->notEmptyString('category_id');
 
         $validator
-            ->integer('duration')
-            ->requirePresence('duration', 'create')
-            ->notEmptyString('duration');
+            ->nonNegativeInteger('teacher_id')
+            ->notEmptyString('teacher_id');
 
         $validator
-            ->decimal('price')
-            ->requirePresence('price', 'create')
-            ->notEmptyString('price');
-
-        $validator
-            ->scalar('state')
-            ->allowEmptyString('state');
-
-        $validator
-            ->scalar('course_level')
-            ->requirePresence('course_level', 'create')
-            ->notEmptyString('course_level');
+            ->scalar('feedback')
+            ->allowEmptyString('feedback');
 
         return $validator;
     }
@@ -106,7 +99,8 @@ class CoursesTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->existsIn(['user_id'], 'Users'), ['errorField' => 'user_id']);
+        $rules->add($rules->existsIn(['category_id'], 'Category'), ['errorField' => 'category_id']);
+        $rules->add($rules->existsIn(['teacher_id'], 'Teachers'), ['errorField' => 'teacher_id']);
 
         return $rules;
     }

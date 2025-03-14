@@ -40,6 +40,11 @@ class QuizzesTable extends Table
         $this->setTable('quizzes');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->belongsTo('Chapters', [
+            'foreignKey' => 'chapter_id',
+            'joinType' => 'INNER',
+        ]);
     }
 
     /**
@@ -51,30 +56,38 @@ class QuizzesTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('state')
-            ->allowEmptyString('state');
+            ->scalar('title')
+            ->maxLength('title', 255)
+            ->requirePresence('title', 'create')
+            ->notEmptyString('title');
 
         $validator
-            ->scalar('types')
-            ->allowEmptyString('types');
+            ->nonNegativeInteger('chapter_id')
+            ->notEmptyString('chapter_id');
 
         $validator
-            ->scalar('question')
-            ->maxLength('question', 255)
-            ->allowEmptyString('question');
+            ->scalar('questions')
+            ->requirePresence('questions', 'create')
+            ->notEmptyString('questions');
 
         $validator
-            ->scalar('description')
-            ->allowEmptyString('description');
-
-        $validator
-            ->scalar('defficulty_level')
-            ->allowEmptyString('defficulty_level');
-
-        $validator
-            ->integer('duration')
-            ->allowEmptyString('duration');
+            ->scalar('attempts')
+            ->allowEmptyString('attempts');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->existsIn(['chapter_id'], 'Chapters'), ['errorField' => 'chapter_id']);
+
+        return $rules;
     }
 }

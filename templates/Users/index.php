@@ -20,14 +20,12 @@
                 <thead class="datatable-header">
                     <tr>
 
-                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="full_name"
-                                class="datatable-sort-icon fas fa-arrow-up"></i>full_name</th>
+                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="Full_name"
+                                class="datatable-sort-icon fas fa-arrow-up"></i>Full_name</th>
                         <th style="cursor: pointer;" scope="col"><i data-mdb-sort="email"
                                 class="datatable-sort-icon fas fa-arrow-up"></i> email</th>
                         <th style="cursor: pointer;" scope="col"><i data-mdb-sort="password"
                                 class="datatable-sort-icon fas fa-arrow-up"></i> password</th>
-                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="role"
-                                class="datatable-sort-icon fas fa-arrow-up"></i> role</th>
                         <th style="cursor: pointer;" scope="col"><i data-mdb-sort="state"
                                 class="datatable-sort-icon fas fa-arrow-up"></i>state</th>
                         <th style="cursor: pointer;" scope="col"><i data-mdb-sort="actions"
@@ -37,10 +35,9 @@
                 <tbody class="datatable-body">
                     <?php foreach ($User as $users): ?>
                     <tr scope="row" data-mdb-index="0">
-                    <td style="" class="" data-mdb-field="full_name" false=""><?= h($users->full_name) ?></td>
+                    <td style="" class="" data-mdb-field="Full_name" false=""><?= h($users->Full_name) ?></td>
                         <td style="" class="" data-mdb-field="email" false=""><?= h($users->email) ?></td>
                         <td style="" class="" data-mdb-field="password" false=""><?= h($users->password) ?></td>
-                        <td style="" class="" data-mdb-field="role" false=""><?= h($users->role) ?></td>
                         <td style="" class="" data-mdb-field="state" false=""><?= h($users->state) ?></td>
                         <td style="" class="" data-mdb-field="action" false="">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $users->id]) ?>

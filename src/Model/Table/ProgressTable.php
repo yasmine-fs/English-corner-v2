@@ -11,7 +11,6 @@ use Cake\Validation\Validator;
 /**
  * Progress Model
  *
- * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
  * @property \App\Model\Table\CoursesTable&\Cake\ORM\Association\BelongsTo $Courses
  *
  * @method \App\Model\Entity\Progres newEmptyEntity()
@@ -44,11 +43,13 @@ class ProgressTable extends Table
         $this->setDisplayField('id_progress');
         $this->setPrimaryKey('id_progress');
 
-        $this->belongsTo('Users', [
-            'foreignKey' => 'user_id',
+        $this->belongsTo('Students', [
+            'foreignKey' => 'student_id',
+            'joinType' => 'INNER',
         ]);
         $this->belongsTo('Courses', [
             'foreignKey' => 'course_id',
+            'joinType' => 'INNER',
         ]);
     }
 
@@ -61,25 +62,17 @@ class ProgressTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->integer('user_id')
-            ->allowEmptyString('user_id');
+            ->scalar('completed_chapters')
+            ->allowEmptyString('completed_chapters');
 
         $validator
-            ->integer('quizz_id')
-            ->requirePresence('quizz_id', 'create')
-            ->notEmptyString('quizz_id');
+            ->scalar('student_answers')
+            ->allowEmptyString('student_answers');
 
         $validator
-            ->integer('course_id')
-            ->allowEmptyString('course_id');
-
-        $validator
-            ->decimal('completion')
-            ->allowEmptyString('completion');
-
-        $validator
-            ->date('last_accessed')
-            ->allowEmptyDate('last_accessed');
+            ->scalar('status')
+            ->requirePresence('status', 'create')
+            ->notEmptyString('status');
 
         return $validator;
     }
@@ -93,7 +86,7 @@ class ProgressTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->existsIn(['user_id'], 'Users'), ['errorField' => 'user_id']);
+        $rules->add($rules->existsIn(['student_id'], 'Students'), ['errorField' => 'student_id']);
         $rules->add($rules->existsIn(['course_id'], 'Courses'), ['errorField' => 'course_id']);
 
         return $rules;

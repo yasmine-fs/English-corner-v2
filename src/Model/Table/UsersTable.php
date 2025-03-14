@@ -11,8 +11,8 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
- * @property \App\Model\Table\CoursesTable&\Cake\ORM\Association\HasMany $Courses
- * @property \App\Model\Table\ReviewsTable&\Cake\ORM\Association\HasMany $Reviews
+ * @property \App\Model\Table\StudentsTable&\Cake\ORM\Association\HasOne $Students
+ * @property \App\Model\Table\TeachersTable&\Cake\ORM\Association\HasOne $Teachers
  *
  * @method \App\Model\Entity\User newEmptyEntity()
  * @method \App\Model\Entity\User newEntity(array $data, array $options = [])
@@ -43,14 +43,10 @@ class UsersTable extends Table
         $this->setTable('users');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
-
-        $this->hasMany('Courses', [
+        $this->hasOne('Students', [
             'foreignKey' => 'user_id',
         ]);
-        $this->hasMany('Progress', [
-            'foreignKey' => 'user_id',
-        ]);
-        $this->hasMany('Reviews', [
+        $this->hasOne('Teachers', [
             'foreignKey' => 'user_id',
         ]);
     }
@@ -64,15 +60,16 @@ class UsersTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmptyString('email');
+            ->scalar('Full_name')
+            ->maxLength('Full_name', 255)
+            ->requirePresence('Full_name', 'create')
+            ->notEmptyString('Full_name');
 
         $validator
-            ->scalar('full_name')
-            ->maxLength('full_name', 255)
-            ->requirePresence('full_name', 'create')
-            ->notEmptyString('full_name');
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmptyString('email')
+            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
             ->scalar('password')
@@ -80,7 +77,10 @@ class UsersTable extends Table
             ->requirePresence('password', 'create')
             ->notEmptyString('password');
 
-   
+        $validator
+            ->scalar('state')
+            ->allowEmptyString('state');
+
         return $validator;
     }
 

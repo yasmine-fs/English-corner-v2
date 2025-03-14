@@ -8,12 +8,11 @@ use Cake\ORM\Entity;
 /**
  * Progres Entity
  *
- * @property int $id
- * @property int|null $user_id
- * @property int $quizz_id
- * @property int|null $course_id
- * @property string|null $completion
- * @property \Cake\I18n\Date|null $last_accessed
+ * @property int $student_id
+ * @property int $course_id
+ * @property string|null $completed_chapters
+ * @property string|null $student_answers
+ * @property string $status
  *
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Course $course
@@ -30,11 +29,9 @@ class Progres extends Entity
      * @var array<string, bool>
      */
     protected array $_accessible = [
-        'user_id' => true,
-        'quizz_id' => true,
-        'course_id' => true,
-        'completion' => true,
-        'last_accessed' => true,
+        'completed_chapters' => true,
+        'student_answers' => true,
+        'status' => true,
         'user' => true,
         'course' => true,
     ];

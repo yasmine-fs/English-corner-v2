@@ -45,7 +45,7 @@ class PagesController extends AppController{
      */
     public function display(string ...$path): ?Response
     {
-        $this->viewBuilder()->setLayout("website");
+        $this->viewBuilder()->setLayout("auth");
         if (!$path) {
             return $this->redirect('/');
         }
@@ -73,11 +73,11 @@ class PagesController extends AppController{
     }
 
 public function about(){
-    $this->viewBuilder()->setLayout("website");
+    $this->viewBuilder()->setLayout("auth");
 
 }
 public function contact(){
-    $this->viewBuilder()->setLayout("website");
+    $this->viewBuilder()->setLayout("auth");
 
 }
 

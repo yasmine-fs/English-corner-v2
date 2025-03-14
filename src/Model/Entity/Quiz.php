@@ -8,13 +8,11 @@ use Cake\ORM\Entity;
 /**
  * Quiz Entity
  *
- * @property int $id_qz
- * @property string|null $state
- * @property string|null $types
- * @property string|null $question
- * @property string|null $description
- * @property string|null $defficulty_level
- * @property int|null $duration
+ * @property int $id
+ * @property string $title
+ * @property int $chapter_id
+ * @property string $questions
+ * @property string|null $attempts
  */
 class Quiz extends Entity
 {
@@ -28,11 +26,9 @@ class Quiz extends Entity
      * @var array<string, bool>
      */
     protected array $_accessible = [
-        'state' => true,
-        'types' => true,
-        'question' => true,
-        'description' => true,
-        'defficulty_level' => true,
-        'duration' => true,
+        'title' => true,
+        'chapter_id' => true,
+        'questions' => true,
+        'attempts' => true,
     ];
 }

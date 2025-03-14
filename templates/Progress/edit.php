@@ -6,62 +6,48 @@
  * @var string[]|\Cake\Collection\CollectionInterface $courses
  */
 ?>
-<section>
-    <div class="col-sm-4 m-1">
-        <!-- id_progress input -->
-        <div class="form-outline">
-            <input type="text" name="id_progress" value="<?= $progres->id_progress ?  $progres->id_progress : '' ?>"
-                class="form-control" />
-            <label class="form-label" for="form8Example3">id_progress</label>
-        </div>
-    </div>
-    </div>
-    <div class="col-sm-4 m-1">
-        <!-- user_id input -->
-        <div class="form-outline">
-            <input type="text" name="user_id" value="<?= $progres->user_id ?  $progres->user_id : '' ?>"
-                class="form-control" />
-            <label class="form-label" for="form8Example3">user_id</label>
-        </div>
-    </div>
+<section class="w-100 p-5">
+    <div class="m-4">
+        <h2 class="fw-bold">Add New Chapter</h2>
+        <p class="text-muted">
+            Use the form below to add a new chapter
+        </p>
     </div>
 
-    <hr />
-    <div class="col-sm-4 m-1">
-        <!-- quizz_id input -->
-        <div class="form-outline">
-            <input type="text" name="quizz_id" value="<?= $progres->quizz_id ?  $progres->quizz_id : '' ?>"
-                class="form-control" />
-            <label class="form-label" for="form8Example3">quizz_id</label>
-        </div>
+    <?= $this->Form->create(  $chapter) ?>
+    <div class="container m-5">
+
     </div>
-
-    <div class="col-sm-4 m-1">
-        <!-- course_id input -->
-        <div class="form-outline">
-            <input type="text" name="course_id" value="<?= $progres->course_id ?  $progres->course_id : '' ?>"
-                class="form-control" />
-            <label class="form-label" for="form8Example3">course_id</label>
-        </div>
-        <div class="row">
-            <div class="col-sm-4 m-1">
-                <!-- completion input -->
-                <div class="form-outline">
-                    <input type="text" name="completion"
-                        value="<?= $progres->completion ?  $progres->completion : '' ?>" class="form-control" />
-                    <label class="form-label" for="form8Example3">completion</label>
-                </div>
-
-                <div class="form-outline">
-                    <div class="col-sm-4 m-1">
-
-                        <input type="text" name="last_accessed" value="<?= $progres->last_accessed ?  $progres->last_accessed : '' ?>"
-                            class="form-control" />
-                        <label class="form-label" for="form8Example3">last_accessed</label>
-                    </div>
-                </div>
+    <div class="row">
+        <div class="col-sm-4 m-1">
+            <!-- completed_chapters input -->
+            <div class="form-outline">
+                <input type="text" name="title" class="form-control" />
+                <label class="form-label" for="form8Example1">completed_chapters</label>
             </div>
-            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-dark mt-4']) ?>
-            <?= $this->Form->end() ?>
+        </div>
+        <div class="col-sm-4 m-1">
+            <!-- student_answers input -->
+            <div class="form-outline">
+                <input type="text" name="title" class="form-control" />
+                <label class="form-label" for="form8Example1">student_answers</label>
+            </div>
+        </div>
+        <div class="col-sm-4 m-1">
+            <!-- status input -->
+            <div class="form-outline">
+                <input type="text" name="status" class="form-control" />
+                <label class="form-label" for="form8Example1">status</label>
+
+                <select id="options" name="state" class="form-select">
+                    <option value="not_statrted">not_statrted</option>
+                    <option value="in_progress">in_progress</option>
+                    <option value="completed">completed</option>
+                </select>
+            </div>
+        </div>
+
+        <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-dark mt-4']) ?>
+        <?= $this->Form->end() ?>
 
 </section>

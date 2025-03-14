@@ -18,9 +18,9 @@
             <!-- user Information on the left -->
             <div class="col-md-12">
                 <h4 class="fw-bold mb-3">users Informations</h4>
-                <!-- full_name input -->
+                <!-- Full_name input -->
                 <div class="mb-3">
-                    <p><strong>full_name:</strong> <?= h($user->full_name) ?></p>
+                    <p><strong>Full_name:</strong> <?= h($user->Full_name) ?></p>
                 </div>
                 <!-- email input -->
                 <div class="mb-3">
@@ -29,10 +29,6 @@
                 <!-- password  input -->
                 <div class="mb-3">
                     <p><strong>password:</strong> <?= h($user->password) ?></p>
-                </div>
-                <!--role  input -->
-                <div class="mb-3">
-                    <p><strong>role:</strong> <?= h($user->role) ?></p>
                 </div>
                 <!--state  input -->
                 <div class="mb-3">

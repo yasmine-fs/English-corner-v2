@@ -25,8 +25,8 @@ class UsersTableTest extends TestCase
      */
     protected array $fixtures = [
         'app.Users',
-        'app.Courses',
-        'app.Reviews',
+        'app.Students',
+        'app.Teachers',
     ];
 
     /**

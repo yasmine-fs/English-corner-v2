@@ -31,7 +31,7 @@ public function beforeFilter(\Cake\Event\EventInterface $event)
     $controller = $this->getRequest()->getParam( 'controller');
     
   if (($controller=== 'Pages')){
-        $this->Authentication->allowUnauthenticated(['display','about','contact','privacy_policy','terms of service']);
+        $this->Authentication->allowUnauthenticated(['display','about','contact']);
      }
      if(($controller=== 'Users')){
         $this->Authentication->allowUnauthenticated(['login','signup']);

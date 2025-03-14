@@ -6,71 +6,48 @@
  * @var \Cake\Collection\CollectionInterface|string[] $courses
  */
 ?>
-<section>
+<section class="w-100 p-5">
     <div class="m-4">
-        <h2 class="fw-bold">Add New progress</h2>
+        <h2 class="fw-bold">Add New Chapter</h2>
         <p class="text-muted">
-            Use the form below to add a new progress.
+            Use the form below to add a new chapter
         </p>
     </div>
 
-
-    <?= $this->Form->create($progres) ?>
+    <?= $this->Form->create(  $chapter) ?>
     <div class="container m-5">
 
-     </div>
-    <div class="row">
-        <div class="col-sm-4 m-1">
-            <!-- id_progress  input -->
-            <div class="form-outline">
-                <input type="text" name="id_progress " class="form-control" />
-                <label class="form-label" for="form8Example3">id_progress </label>
-            </div>
-        </div>
     </div>
     <div class="row">
         <div class="col-sm-4 m-1">
-            <!-- user_id input -->
+            <!-- completed_chapters input -->
             <div class="form-outline">
-                <input type="text" name="user_id" class="form-control" />
-                <label class="form-label" for="form8Example3">user_id</label>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-4 m-1">
-            <!--quizz_id  input -->
-            <div class="form-outline">
-                <input type="text" name="quizz_id" class="form-control" />
-                <label class="form-label" for="form8Example4">quizz_id</label>
+                <input type="text" name="title" class="form-control" />
+                <label class="form-label" for="form8Example1">completed_chapters</label>
             </div>
         </div>
         <div class="col-sm-4 m-1">
-            <!--course_id  input -->
+            <!-- student_answers input -->
             <div class="form-outline">
-                <input type="text" name="course_id" class="form-control" />
-                <label class="form-label" for="form8Example4">course_id</label>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-4 m-1">
-            <!--completion  input -->
-            <div class="form-outline">
-                <input type="text" name="completion" class="form-control" />
-                <label class="form-label" for="form8Example4">completion</label>
+                <input type="text" name="student_answers" class="form-control" />
+                <label class="form-label" for="form8Example1">student_answers</label>
             </div>
         </div>
         <div class="col-sm-4 m-1">
-            <!--last_accessed  input -->
+            <!-- status input -->
             <div class="form-outline">
-                <input type="text" name="last_accessed" class="form-control" />
-                <label class="form-label" for="form8Example4">last_accessed</label>
+                <input type="text" name="status" class="form-control" />
+                <label class="form-label" for="form8Example1">status</label>
+
+                <select id="options" name="state" class="form-select">
+                    <option value="not_statrted">not_statrted</option>
+                    <option value="in_progress">in_progress</option>
+                    <option value="completed">completed</option>
+                </select>
             </div>
         </div>
-    </div>
-    </div>
-    <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-dark mt-4']) ?>
-    <?= $this->Form->end() ?>
+
+        <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-dark mt-4']) ?>
+        <?= $this->Form->end() ?>
 
 </section>

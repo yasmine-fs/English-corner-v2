@@ -25,12 +25,11 @@ class ProgressFixture extends TestFixture
     {
         $this->records = [
             [
-                'id_progress' => 1,
-                'user_id' => 1,
-                'quizz_id' => 1,
+                'student_id' => 1,
                 'course_id' => 1,
-                'completion' => 1.5,
-                'last_accessed' => '2025-02-08',
+                'completed_chapters' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+                'student_answers' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+                'status' => 'Lorem ipsum dolor sit amet',
             ],
         ];
         parent::init();
