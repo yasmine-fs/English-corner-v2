@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controller;
-
+use Cake\ORM\TableRegistry;
 /**
  * Admins Controller
  *
@@ -127,5 +127,37 @@ class AdminsController extends AppController
         $this->Flash->success(__('You have been logged out successfully.'));
         return $this->redirect(['action' => 'login']);
     }
+
+
+    //** approval certificates method */
+    public function approveCertificate($id)
+    {
+        $teachersTable = TableRegistry::getTableLocator()->get('Teachers');
+    
+        $teacher = $teachersTable->get($id);
+        if ($teacher) {
+            $teacher->certificate_status = 'approved';
+            if ($teachersTable->save($teacher)) {
+                return 'Certificate approved';
+            }
+        }
+        return 'Error approving certificate';
+    }
+
+//**rehection certificate method */
+public function rejectCertificate($id)
+{
+    $teachersTable = TableRegistry::getTableLocator()->get('Teachers');
+
+    $teacher = $teachersTable->get($id);
+    if ($teacher) {
+        $teacher->certificate_status = 'rejected';
+        if ($teachersTable->save($teacher)) {
+            return 'Certificate rejected successfully';
+        }
+    }
+    return 'Error rejecting certificate';
 }
 
+
+}

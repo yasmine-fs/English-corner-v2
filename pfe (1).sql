@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admins` (
   `id` int(10) UNSIGNED NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -42,10 +42,8 @@ CREATE TABLE `admins` (
 CREATE TABLE `answers` (
   `id` int(10) UNSIGNED NOT NULL,
   `quizz_id` int(10) UNSIGNED NOT NULL,
-  `question` text NOT NULL,
-  `student_answer` text DEFAULT NULL,
-  `correct_answer` text NOT NULL,
-  `is_correct` tinyint(1) NOT NULL
+  `correct_answer` text DEFAULT NULL,
+  `is_correct` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -56,7 +54,7 @@ CREATE TABLE `answers` (
 
 CREATE TABLE `category` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `parent_category_id` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -69,8 +67,9 @@ CREATE TABLE `category` (
 
 CREATE TABLE `chapters` (
   `id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
   `course_id` int(10) UNSIGNED NOT NULL
+  `content` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -81,7 +80,7 @@ CREATE TABLE `chapters` (
 
 CREATE TABLE `content` (
   `id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
   `text` text DEFAULT NULL,
   `chapter_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -94,11 +93,12 @@ CREATE TABLE `content` (
 
 CREATE TABLE `courses` (
   `id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `category_id` int(10) UNSIGNED NOT NULL,
   `teacher_id` int(10) UNSIGNED NOT NULL,
-  `feedback` text DEFAULT NULL
+  `feedback` text DEFAULT NULL,
+  `level` ENUM ('Easy','Medium','Hard','Advanced') NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -112,7 +112,7 @@ CREATE TABLE `progress` (
   `course_id` int(10) UNSIGNED NOT NULL,
   `completed_chapters` text DEFAULT NULL,
   `student_answers` text DEFAULT NULL,
-  `status` enum('not_started','in_progress','completed') NOT NULL
+  `status` enum('not_started','in_progress','completed') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -123,10 +123,11 @@ CREATE TABLE `progress` (
 
 CREATE TABLE `quizzes` (
   `id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
   `chapter_id` int(10) UNSIGNED NOT NULL,
-  `questions` text NOT NULL,
-  `attempts` text DEFAULT NULL
+  `questions` text DEFAULT NULL,
+  `attempts` text DEFAULT NULL,
+  `quizz_type` ENUM('multiple_choice', 'true_false', 'short_answer', 'long_answer', 'fill_in_the_blank', 'matching', 'ordering') NOT NULL;
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -149,7 +150,7 @@ CREATE TABLE `students` (
 CREATE TABLE `teachers` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
-  `teaching_domain` enum('Technology','Business','Science','Mathematics','Engineering','Health & Wellness','Arts','Humanities','Languages','Social Sciences','Law') NOT NULL
+  `teaching_domain` enum('Technology','Business','Science','Mathematics','Engineering','Health & Wellness','Arts','Humanities','Languages','Social Sciences','Law') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -160,9 +161,9 @@ CREATE TABLE `teachers` (
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `state` enum('enrolled','active','blocked','inactive') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -197,13 +198,6 @@ ALTER TABLE `category`
 ALTER TABLE `chapters`
   ADD PRIMARY KEY (`id`),
   ADD KEY `course_id` (`course_id`);
-
---
--- Indexes for table `content`
---
-ALTER TABLE `content`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `chapter_id` (`chapter_id`);
 
 --
 -- Indexes for table `courses`
@@ -277,12 +271,6 @@ ALTER TABLE `chapters`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `content`
---
-ALTER TABLE `content`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
@@ -334,13 +322,7 @@ ALTER TABLE `category`
 ALTER TABLE `chapters`
   ADD CONSTRAINT `chapters_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE;
 
---
--- Constraints for table `content`
---
-ALTER TABLE `content`
-  ADD CONSTRAINT `content_ibfk_1` FOREIGN KEY (`chapter_id`) REFERENCES `chapters` (`id`) ON DELETE CASCADE;
 
---
 -- Constraints for table `courses`
 --
 ALTER TABLE `courses`

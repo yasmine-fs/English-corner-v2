@@ -11,8 +11,11 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $title
  * @property int $chapter_id
- * @property string $questions
+ * @property string|null $questions
  * @property string|null $attempts
+ * @property string|null $quizz_type
+ *
+ * @property \App\Model\Entity\Chapter $chapter
  */
 class Quiz extends Entity
 {
@@ -30,5 +33,7 @@ class Quiz extends Entity
         'chapter_id' => true,
         'questions' => true,
         'attempts' => true,
+        'quizz_type' => true,
+        'chapter' => true,
     ];
 }

@@ -35,6 +35,17 @@
     </div>
     <div class="row">
         <div class="col-sm-4 m-1">
+            <!-- level input -->
+            <div class="form-outline">
+                <input type="text" name="level" class="form-control" />
+                <label class="form-label" for="form8Example3">level</label>
+
+                <select id="options" name="level" class="form-select">
+                    <option value="Technology">Easy</option>
+                    <option value="Business">Medium</option>
+                    <option value="Science">Hard</option>
+                    <option value="Mathematics">Advanced</option>
+            </div>
             <!-- feedback input -->
             <div class="form-outline">
                 <input type="text" name="feedback" class="form-control" />

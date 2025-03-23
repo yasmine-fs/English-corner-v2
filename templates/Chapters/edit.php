@@ -25,6 +25,13 @@
                 <label class="form-label" for="form8Example1">title</label>
             </div>
         </div>
+        <div class="col-sm-4 m-1">
+            <!-- content input -->
+            <div class="form-outline">
+                <input type="text" name="title" class="form-control" />
+                <label class="form-label" for="form8Example1">content</label>
+            </div>
+        </div>
 
     <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-dark mt-4']) ?>
     <?= $this->Form->end() ?>

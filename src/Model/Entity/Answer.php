@@ -10,10 +10,8 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property int $quizz_id
- * @property string $question
- * @property string|null $student_answer
- * @property string $correct_answer
- * @property bool $is_correct
+ * @property string|null $correct_answer
+ * @property bool|null $is_correct
  *
  * @property \App\Model\Entity\Quiz $quiz
  */
@@ -30,8 +28,6 @@ class Answer extends Entity
      */
     protected array $_accessible = [
         'quizz_id' => true,
-        'question' => true,
-        'student_answer' => true,
         'correct_answer' => true,
         'is_correct' => true,
         'quiz' => true,

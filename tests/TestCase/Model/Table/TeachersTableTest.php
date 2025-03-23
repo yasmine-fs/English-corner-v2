@@ -54,23 +54,23 @@ class TeachersTableTest extends TestCase
     }
 
     /**
-     * Test validationDefault method
-     *
-     * @return void
-     * @uses \App\Model\Table\TeachersTable::validationDefault()
-     */
-    public function testValidationDefault(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
      * Test buildRules method
      *
      * @return void
      * @uses \App\Model\Table\TeachersTable::buildRules()
      */
     public function testBuildRules(): void
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test validationDefault method
+     *
+     * @return void
+     * @uses \App\Model\Table\TeachersTable::validationDefault()
+     */
+    public function testValidationDefault(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

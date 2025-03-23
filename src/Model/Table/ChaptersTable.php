@@ -68,12 +68,16 @@ class ChaptersTable extends Table
         $validator
             ->scalar('title')
             ->maxLength('title', 255)
-            ->requirePresence('title', 'create')
-            ->notEmptyString('title');
+            ->allowEmptyString('title');
 
         $validator
             ->nonNegativeInteger('course_id')
             ->notEmptyString('course_id');
+
+        $validator
+            ->scalar('content')
+            ->maxLength('content', 4294967295)
+            ->allowEmptyString('content');
 
         return $validator;
     }

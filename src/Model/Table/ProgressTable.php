@@ -11,7 +11,7 @@ use Cake\Validation\Validator;
 /**
  * Progress Model
  *
- * @property \App\Model\Table\CoursesTable&\Cake\ORM\Association\BelongsTo $Courses
+ * @property \App\Model\Table\StudentsTable&\Cake\ORM\Association\BelongsTo $Students
  *
  * @method \App\Model\Entity\Progres newEmptyEntity()
  * @method \App\Model\Entity\Progres newEntity(array $data, array $options = [])
@@ -47,8 +47,8 @@ class ProgressTable extends Table
             'foreignKey' => 'student_id',
             'joinType' => 'INNER',
         ]);
-        $this->belongsTo('Courses', [
-            'foreignKey' => 'course_id',
+        $this->belongsTo('Chapters', [
+            'foreignKey' => 'chapter_id',
             'joinType' => 'INNER',
         ]);
     }
@@ -64,10 +64,6 @@ class ProgressTable extends Table
         $validator
             ->scalar('completed_chapters')
             ->allowEmptyString('completed_chapters');
-
-        $validator
-            ->scalar('student_answers')
-            ->allowEmptyString('student_answers');
 
         $validator
             ->scalar('status')
@@ -87,7 +83,7 @@ class ProgressTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn(['student_id'], 'Students'), ['errorField' => 'student_id']);
-        $rules->add($rules->existsIn(['course_id'], 'Courses'), ['errorField' => 'course_id']);
+        $rules->add($rules->existsIn(['chapter_id'], 'Chapters'), ['errorField' => 'chapter_id']);
 
         return $rules;
     }

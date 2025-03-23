@@ -11,6 +11,8 @@ use Cake\Validation\Validator;
 /**
  * Quizzes Model
  *
+ * @property \App\Model\Table\ChaptersTable&\Cake\ORM\Association\BelongsTo $Chapters
+ *
  * @method \App\Model\Entity\Quiz newEmptyEntity()
  * @method \App\Model\Entity\Quiz newEntity(array $data, array $options = [])
  * @method array<\App\Model\Entity\Quiz> newEntities(array $data, array $options = [])
@@ -47,35 +49,6 @@ class QuizzesTable extends Table
         ]);
     }
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
-    public function validationDefault(Validator $validator): Validator
-    {
-        $validator
-            ->scalar('title')
-            ->maxLength('title', 255)
-            ->requirePresence('title', 'create')
-            ->notEmptyString('title');
-
-        $validator
-            ->nonNegativeInteger('chapter_id')
-            ->notEmptyString('chapter_id');
-
-        $validator
-            ->scalar('questions')
-            ->requirePresence('questions', 'create')
-            ->notEmptyString('questions');
-
-        $validator
-            ->scalar('attempts')
-            ->allowEmptyString('attempts');
-
-        return $validator;
-    }
 
     /**
      * Returns a rules checker object that will be used for validating

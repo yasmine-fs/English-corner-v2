@@ -52,30 +52,6 @@ class CategoryTable extends Table
         ]);
     }
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
-    public function validationDefault(Validator $validator): Validator
-    {
-        $validator
-            ->scalar('name')
-            ->maxLength('name', 255)
-            ->requirePresence('name', 'create')
-            ->notEmptyString('name');
-
-        $validator
-            ->scalar('description')
-            ->allowEmptyString('description');
-
-        $validator
-            ->nonNegativeInteger('parent_category_id')
-            ->allowEmptyString('parent_category_id');
-
-        return $validator;
-    }
 
     /**
      * Returns a rules checker object that will be used for validating

@@ -26,6 +26,10 @@
                 <div class="mb-3">
                     <p><strong>description:</strong> <?= h($course->description) ?></p>
                 </div>
+                <!-- level input -->
+                <div class="mb-3">
+                    <p><strong>level:</strong> <?= h($course->level) ?></p>
+                </div>
                 <!-- feedback  input -->
                 <div class="mb-3">
                     <p><strong>feedback:</strong> <?= h($course->feedback) ?></p>

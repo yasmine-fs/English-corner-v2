@@ -22,10 +22,6 @@
                 <div class="mb-3">
                     <p><strong>completed_chapters:</strong> <?= h($progres->completed_chapters) ?></p>
                 </div>
-                <!-- student_answers input -->
-                <div class="mb-3">
-                    <p><strong>student_answers:</strong> <?= h($progres->student_answers) ?></p>
-                </div>
                 <!-- status  input -->
                 <div class="mb-3">
                     <p><strong>status:</strong> <?= h($progres->status) ?></p>

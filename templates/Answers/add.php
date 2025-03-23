@@ -19,22 +19,6 @@
     </div>
     <div class="row">
         <div class="col-sm-4 m-1">
-            <!-- question input -->
-            <div class="form-outline">
-                <input type="text" name="question" class="form-control" />
-                <label class="form-label" for="form8Example1">question</label>
-            </div>
-        </div>
-        <div class="col-sm-4 m-1">
-            <!--student_answer input -->
-            <div class="form-outline">
-                <input type="text" name="student_answer" class="form-control" />
-                <label class="form-label" for="form8Example2">student_answer</label>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-4 m-1">
             <!-- correct_answer input -->
             <div class="form-outline">
                 <input type="text" name="correct_answer" class="form-control" />

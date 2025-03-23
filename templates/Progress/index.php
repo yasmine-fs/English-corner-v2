@@ -22,8 +22,6 @@
 
                         <th style="cursor: pointer;" scope="col"><i data-mdb-sort="completed_chapters"
                                 class="datatable-sort-icon fas fa-arrow-up"></i>completed_chapters</th>
-                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="student_answers"
-                                class="datatable-sort-icon fas fa-arrow-up"></i> student_answers</th>
                         <th style="cursor: pointer;" scope="col"><i data-mdb-sort="status"
                                 class="datatable-sort-icon fas fa-arrow-up"></i> status</th>
                         <th style="cursor: pointer;" scope="col"><i data-mdb-sort="actions"
@@ -34,7 +32,6 @@
                     <?php foreach ($Progres as $progress): ?>
                     <tr scope="row" data-mdb-index="0">
                     <td style="" class="" data-mdb-field="completed_chapters" false=""><?= h($progress->completed_chapters) ?></td>
-                        <td style="" class="" data-mdb-field="student_answers" false=""><?= h($progress->student_answers) ?></td>
                         <td style="" class="" data-mdb-field="status" false=""><?= h($progress->status) ?></td>
                         <td style="" class="" data-mdb-field="action" false="">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $progress->id]) ?>

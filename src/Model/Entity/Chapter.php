@@ -9,11 +9,11 @@ use Cake\ORM\Entity;
  * Chapter Entity
  *
  * @property int $id
- * @property string $title
+ * @property string|null $title
  * @property int $course_id
  *
- * @property \App\Model\Entity\Course $course
  * @property \App\Model\Entity\Content[] $content
+ * @property \App\Model\Entity\Course $course
  * @property \App\Model\Entity\Quiz[] $quizzes
  */
 class Chapter extends Entity
@@ -30,8 +30,8 @@ class Chapter extends Entity
     protected array $_accessible = [
         'title' => true,
         'course_id' => true,
-        'course' => true,
         'content' => true,
+        'course' => true,
         'quizzes' => true,
     ];
 }

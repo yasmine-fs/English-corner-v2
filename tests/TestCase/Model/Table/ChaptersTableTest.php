@@ -55,17 +55,6 @@ class ChaptersTableTest extends TestCase
     }
 
     /**
-     * Test validationDefault method
-     *
-     * @return void
-     * @uses \App\Model\Table\ChaptersTable::validationDefault()
-     */
-    public function testValidationDefault(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
      * Test buildRules method
      *
      * @return void

@@ -26,6 +26,8 @@
                                 class="datatable-sort-icon fas fa-arrow-up"></i> description</th>
                         <th style="cursor: pointer;" scope="col"><i data-mdb-sort="feedback"
                                 class="datatable-sort-icon fas fa-arrow-up"></i>feedback</th>
+                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="level"
+                                class="datatable-sort-icon fas fa-arrow-up"></i>level</th>
                         <th style="cursor: pointer;" scope="col"><i data-mdb-sort="actions"
                                 class="datatable-sort-icon fas fa-arrow-up"></i> Actions</th>
                     </tr>
@@ -33,8 +35,9 @@
                 <tbody class="datatable-body">
                     <?php foreach ($Course as $courses): ?>
                     <tr scope="row" data-mdb-index="0">
-                    <td style="" class="" data-mdb-field="title" false=""><?= h($courses->title) ?></td>
+                        <td style="" class="" data-mdb-field="title" false=""><?= h($courses->title) ?></td>
                         <td style="" class="" data-mdb-field="description" false=""><?= h($courses->description) ?></td>
+                        <td style="" class="" data-mdb-field="level" false=""><?= h($courses->level) ?></td>
                         <td style="" class="" data-mdb-field="feedback" false=""><?= h($courses->feedback) ?></td>
                         <td style="" class="" data-mdb-field="action" false="">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $courses->id]) ?>

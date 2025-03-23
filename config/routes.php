@@ -61,6 +61,16 @@ return function (RouteBuilder $routes): void {
         $builder->connect('/signup', ['controller' => 'Users', 'action' => 'signup', 'signup']);
         $builder->connect('/login', ['controller' => 'Users', 'action' => 'login', 'login']);
         $builder->connect('/Quizz', ['controller' => 'Quizz', 'action' => 'add']);
+        $builder->connect('/admin/teachers/approve/:id', 
+    ['controller' => 'Teachers', 'action' => 'approveCertificate'], 
+    ['pass' => ['id'], 'id' => '\d+', 'method' => 'POST']
+);
+
+$builder->connect('/admin/teachers/reject/:id', 
+    ['controller' => 'Teachers', 'action' => 'rejectCertificate'], 
+    ['pass' => ['id'], 'id' => '\d+', 'method' => 'POST']
+);
+
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
          */

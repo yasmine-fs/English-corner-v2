@@ -22,6 +22,9 @@
                 <div class="mb-3">
                     <p><strong>title:</strong> <?= h($chapter->title) ?></p>
                 </div>
+                <div class="mb-3">
+                    <p><strong>content:</strong> <?= h($chapter->content) ?></p>
+                </div>
             </div>
 
 

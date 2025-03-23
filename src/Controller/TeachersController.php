@@ -20,21 +20,50 @@ class TeachersController extends AppController
     /**
      * Teacher Signup (Registration)
      */
-    public function signup() {
-        // Create a new teacher entity
+    public function signup()
+    {
         $teacher = $this->Teachers->newEmptyEntity();
+        
         if ($this->request->is('post')) {
-            // Patch teacher data from the form
             $teacher = $this->Teachers->patchEntity($teacher, $this->request->getData());
-            // Save the teacher; on success, redirect to login
-            if ($this->Teachers->save($teacher)) {
-                $this->Flash->success(__('Teacher registration successful.'));
-                return $this->redirect(['action' => 'login']);
+    
+            // Handle certificate upload
+            $file = $this->request->getData('certificate');
+            if ($file && $file->getError() === UPLOAD_ERR_OK) {
+                $filename = time() . '-' . $file->getClientFilename(); // Unique file name
+                $uploadPath = WWW_ROOT . 'uploads/certificates/' . $filename; 
+    
+                if (move_uploaded_file($file->getStream()->getMetadata('uri'), $uploadPath)) {
+                    $teacher->certificate_path = 'uploads/certificates/' . $filename;
+                    $teacher->certificate_status = 'pending'; // Set status to pending
+                }
             }
-            $this->Flash->error(__('Unable to register teacher. Please, try again.'));
+    
+            if ($this->Teachers->save($teacher)) {
+                $this->Flash->success(__('Signup successful! Your certificate is pending approval.'));
+                return $this->redirect(['action' => 'login']);
+            } else {
+                $this->Flash->error(__('Signup failed. Please check your details and try again.'));
+            }
         }
+    
         $this->set(compact('teacher'));
     }
+    
+    public function approve($id = null)
+{
+    $teacher = $this->Teachers->get($id);
+    if ($teacher) {
+        $teacher->status = 'approved';
+        if ($this->Teachers->save($teacher)) {
+            $this->Flash->success(__('Teacher approved successfully.'));
+        } else {
+            $this->Flash->error(__('Unable to approve teacher.'));
+        }
+    }
+    return $this->redirect(['action' => 'index']);
+}
+
 
     /**
      * Teacher Login

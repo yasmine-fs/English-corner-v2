@@ -9,14 +9,16 @@ use Cake\ORM\Entity;
  * Course Entity
  *
  * @property int $id
- * @property string $title
+ * @property string|null $title
  * @property string|null $description
+ * @property string|null $level
  * @property int $category_id
  * @property int $teacher_id
  * @property string|null $feedback
  *
- * @property \App\Model\Entity\User $user
- * @property \App\Model\Entity\Review[] $reviews
+ * @property \App\Model\Entity\Category $category
+ * @property \App\Model\Entity\Teacher $teacher
+ * @property \App\Model\Entity\Chapter[] $chapters
  */
 class Course extends Entity
 {
@@ -32,10 +34,12 @@ class Course extends Entity
     protected array $_accessible = [
         'title' => true,
         'description' => true,
+        'level' => true,
         'category_id' => true,
         'teacher_id' => true,
         'feedback' => true,
-        'user' => true,
-        'reviews' => true,
+        'category' => true,
+        'teacher' => true,
+        'chapters' => true,
     ];
 }

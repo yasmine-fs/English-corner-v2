@@ -25,6 +25,7 @@ class QuizzesTableTest extends TestCase
      */
     protected array $fixtures = [
         'app.Quizzes',
+        'app.Chapters',
     ];
 
     /**
@@ -58,6 +59,17 @@ class QuizzesTableTest extends TestCase
      * @uses \App\Model\Table\QuizzesTable::validationDefault()
      */
     public function testValidationDefault(): void
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     * @uses \App\Model\Table\QuizzesTable::buildRules()
+     */
+    public function testBuildRules(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

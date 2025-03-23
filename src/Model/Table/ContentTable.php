@@ -47,31 +47,9 @@ class ContentTable extends Table
             'foreignKey' => 'chapter_id',
             'joinType' => 'INNER',
         ]);
-    }
-
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
-    public function validationDefault(Validator $validator): Validator
-    {
-        $validator
-            ->scalar('title')
-            ->maxLength('title', 255)
-            ->requirePresence('title', 'create')
-            ->notEmptyString('title');
-
-        $validator
-            ->scalar('text')
-            ->allowEmptyString('text');
-
-        $validator
-            ->nonNegativeInteger('chapter_id')
-            ->notEmptyString('chapter_id');
-
-        return $validator;
+        $this->hasMany('Progress', [
+            'foreignKey' => 'content_id',
+        ]);
     }
 
     /**

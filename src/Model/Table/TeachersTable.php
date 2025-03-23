@@ -36,22 +36,29 @@ class TeachersTable extends Table
      * @param array<string, mixed> $config The configuration for the Table.
      * @return void
      */
-    public function initialize(array $config): void
-    {
-        parent::initialize($config);
 
-        $this->setTable('teachers');
-        $this->setDisplayField('teaching_domain');
-        $this->setPrimaryKey('id');
-
-        $this->belongsTo('Users', [
-            'foreignKey' => 'user_id',
-            'joinType' => 'INNER',
-        ]);
-        $this->hasMany('Courses', [
-            'foreignKey' => 'teacher_id',
-        ]);
-    }
+        public function initialize(array $config): void
+        {
+            parent::initialize($config);
+            $this->setTable('teachers');
+            $this->setPrimaryKey('id');
+        }
+    
+        public function validationDefault(Validator $validator): Validator
+        {
+            $validator
+                ->requirePresence('full_name')
+                ->notEmptyString('full_name', 'Full Name is required')
+                ->email('email', false, 'Please enter a valid email')
+                ->requirePresence('password')
+                ->notEmptyString('password', 'Password is required')
+                ->requirePresence('certificate_path')
+                ->notEmptyString('certificate_path', 'Certificate is required');
+    
+            return $validator;
+        }
+    
+    
 
     /**
      * Default validation rules.
@@ -59,20 +66,6 @@ class TeachersTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator): Validator
-    {
-        $validator
-            ->nonNegativeInteger('user_id')
-            ->notEmptyString('user_id')
-            ->add('user_id', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
-
-        $validator
-            ->scalar('teaching_domain')
-            ->requirePresence('teaching_domain', 'create')
-            ->notEmptyString('teaching_domain');
-
-        return $validator;
-    }
 
     /**
      * Returns a rules checker object that will be used for validating
@@ -89,3 +82,4 @@ class TeachersTable extends Table
         return $rules;
     }
 }
+

@@ -11,6 +11,10 @@ use Cake\Validation\Validator;
 /**
  * Courses Model
  *
+ * @property \App\Model\Table\CategoryTable&\Cake\ORM\Association\BelongsTo $Category
+ * @property \App\Model\Table\TeachersTable&\Cake\ORM\Association\BelongsTo $Teachers
+ * @property \App\Model\Table\ChaptersTable&\Cake\ORM\Association\HasMany $Chapters
+ *
  * @method \App\Model\Entity\Course newEmptyEntity()
  * @method \App\Model\Entity\Course newEntity(array $data, array $options = [])
  * @method array<\App\Model\Entity\Course> newEntities(array $data, array $options = [])
@@ -52,9 +56,6 @@ class CoursesTable extends Table
         $this->hasMany('Chapters', [
             'foreignKey' => 'course_id',
         ]);
-        $this->hasMany('Progress', [
-            'foreignKey' => 'course_id',
-        ]);
     }
 
     /**
@@ -68,12 +69,15 @@ class CoursesTable extends Table
         $validator
             ->scalar('title')
             ->maxLength('title', 255)
-            ->requirePresence('title', 'create')
-            ->notEmptyString('title');
+            ->allowEmptyString('title');
 
         $validator
             ->scalar('description')
             ->allowEmptyString('description');
+
+        $validator
+            ->scalar('level')
+            ->allowEmptyString('level');
 
         $validator
             ->nonNegativeInteger('category_id')

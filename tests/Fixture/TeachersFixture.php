@@ -22,6 +22,8 @@ class TeachersFixture extends TestFixture
                 'id' => 1,
                 'user_id' => 1,
                 'teaching_domain' => 'Lorem ipsum dolor sit amet',
+                'certificate_path' => 'Lorem ipsum dolor sit amet',
+                'certificate_status' => 'Lorem ipsum dolor sit amet',
             ],
         ];
         parent::init();

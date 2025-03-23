@@ -9,12 +9,11 @@ use Cake\ORM\Entity;
  * Progres Entity
  *
  * @property int $student_id
- * @property int $course_id
+ * @property int $chapter_id
  * @property string|null $completed_chapters
- * @property string|null $student_answers
  * @property string $status
  *
- * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\Student $student
  * @property \App\Model\Entity\Course $course
  */
 class Progres extends Entity
@@ -30,9 +29,8 @@ class Progres extends Entity
      */
     protected array $_accessible = [
         'completed_chapters' => true,
-        'student_answers' => true,
         'status' => true,
-        'user' => true,
+        'student' => true,
         'course' => true,
     ];
 }

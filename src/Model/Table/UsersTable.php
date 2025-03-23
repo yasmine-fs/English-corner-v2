@@ -52,39 +52,6 @@ class UsersTable extends Table
     }
 
     /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
-    public function validationDefault(Validator $validator): Validator
-    {
-        $validator
-            ->scalar('Full_name')
-            ->maxLength('Full_name', 255)
-            ->requirePresence('Full_name', 'create')
-            ->notEmptyString('Full_name');
-
-        $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmptyString('email')
-            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
-
-        $validator
-            ->scalar('password')
-            ->maxLength('password', 255)
-            ->requirePresence('password', 'create')
-            ->notEmptyString('password');
-
-        $validator
-            ->scalar('state')
-            ->allowEmptyString('state');
-
-        return $validator;
-    }
-
-    /**
      * Returns a rules checker object that will be used for validating
      * application integrity.
      *
@@ -93,8 +60,26 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
+        $rules->add($rules->isUnique(['email'], ['allowMultipleNulls' => true]), ['errorField' => 'email']);
 
         return $rules;
     }
+    public function validationDefault(Validator $validator): Validator
+{
+    $validator
+        ->notEmptyFile('certificate', 'Certificate is required')
+        ->add('certificate', [
+            'mimeType' => [
+                'rule' => ['mimeType', ['application/pdf']],
+                'message' => 'Only PDF files are allowed.',
+            ],
+            'fileSize' => [
+                'rule' => ['fileSize', '<=', '20MB'],
+                'message' => 'File size must be less than 20MB.',
+            ],
+        ]);
+
+    return $validator;
+}
+
 }

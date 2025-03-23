@@ -19,11 +19,6 @@
             <table class="table datatable-table">
                 <thead class="datatable-header">
                     <tr>
-
-                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="question"
-                                class="datatable-sort-icon fas fa-arrow-up"></i>question</th>
-                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="student_answer"
-                                class="datatable-sort-icon fas fa-arrow-up"></i> student_answer</th>
                         <th style="cursor: pointer;" scope="col"><i data-mdb-sort="correct_answer"
                                 class="datatable-sort-icon fas fa-arrow-up"></i> correct_answer</th>
                         <th style="cursor: pointer;" scope="col"><i data-mdb-sort="is_correct"
@@ -35,8 +30,6 @@
                 <tbody class="datatable-body">
                     <?php foreach ($Answer as $answers): ?>
                     <tr scope="row" data-mdb-index="0">
-                    <td style="" class="" data-mdb-field="question" false=""><?= h($answers->question) ?></td>
-                        <td style="" class="" data-mdb-field="student_answer" false=""><?= h($answers->student_answer) ?></td>
                         <td style="" class="" data-mdb-field="correct_answer" false=""><?= h($answers->correct_answer) ?></td>
                         <td style="" class="" data-mdb-field="is_correct" false=""><?= h($answers->is_correct) ?></td>
                         <td style="" class="" data-mdb-field="action" false="">

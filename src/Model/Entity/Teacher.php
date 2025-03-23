@@ -10,7 +10,9 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property int $user_id
- * @property string $teaching_domain
+ * @property string|null $teaching_domain
+ * @property string|null $certificate_path
+ * @property string|null $certificate_status
  *
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Course[] $courses
@@ -29,6 +31,8 @@ class Teacher extends Entity
     protected array $_accessible = [
         'user_id' => true,
         'teaching_domain' => true,
+        'certificate_path' => true,
+        'certificate_status' => true,
         'user' => true,
         'courses' => true,
     ];

@@ -1,9 +1,3 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\User $user
- */
-?>
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="row g-2 col-lg-4 col-md-6 col-sm-10 shadow p-4 rounded bg-white">
         <a class="navbar-brand fw-bold fs-3" href="/" style="font-family: 'Arial', sans-serif;">
@@ -22,9 +16,8 @@
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Password"
-                        required>
-                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                    <label for="password">password</label>  
                 </div>
 
                 <div class="d-flex justify-content-between mb-3">

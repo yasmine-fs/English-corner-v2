@@ -33,16 +33,16 @@
                     </tr>
                 </thead>
                 <tbody class="datatable-body">
-                    <?php foreach ($User as $users): ?>
+                    <?php foreach ($users as $user): ?>
                     <tr scope="row" data-mdb-index="0">
-                    <td style="" class="" data-mdb-field="Full_name" false=""><?= h($users->Full_name) ?></td>
-                        <td style="" class="" data-mdb-field="email" false=""><?= h($users->email) ?></td>
-                        <td style="" class="" data-mdb-field="password" false=""><?= h($users->password) ?></td>
-                        <td style="" class="" data-mdb-field="state" false=""><?= h($users->state) ?></td>
+                    <td style="" class="" data-mdb-field="Full_name" false=""><?= h($user->Full_name) ?></td>
+                        <td style="" class="" data-mdb-field="email" false=""><?= h($user->email) ?></td>
+                        <td style="" class="" data-mdb-field="password" false=""><?= h($user->password) ?></td>
+                        <td style="" class="" data-mdb-field="state" false=""><?= h($user->state) ?></td>
                         <td style="" class="" data-mdb-field="action" false="">
-                            <?= $this->Html->link(__('View'), ['action' => 'view', $users->id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $users->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $users->id], ['confirm' => __('Are you sure you want to delete # {0}?', $users->id)]) ?>
+                            <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
+                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $u->id], ['confirm' => __('Are you sure you want to delete # {0}?', $users->id)]) ?>
 
                         </td>
                     </tr>

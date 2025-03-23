@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * Content Entity
  *
  * @property int $id
- * @property string $title
+ * @property string|null $title
  * @property string|null $text
  * @property int $chapter_id
  *

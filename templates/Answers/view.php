@@ -18,14 +18,6 @@
             <!-- answers Information on the left -->
             <div class="col-md-12">
                 <h4 class="fw-bold mb-3">users Informations</h4>
-                <!-- question input -->
-                <div class="mb-3">
-                    <p><strong>question:</strong> <?= h($answer->question) ?></p>
-                </div>
-                <!-- student_answer input -->
-                <div class="mb-3">
-                    <p><strong>student_answer:</strong> <?= h($answer->student_answer) ?></p>
-                </div>
                 <!-- correct_answer  input -->
                 <div class="mb-3">
                     <p><strong>correct_answer:</strong> <?= h($answer->correct_answer) ?></p>

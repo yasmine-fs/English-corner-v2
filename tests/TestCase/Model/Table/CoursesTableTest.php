@@ -25,8 +25,9 @@ class CoursesTableTest extends TestCase
      */
     protected array $fixtures = [
         'app.Courses',
-        'app.Users',
-        'app.Reviews',
+        'app.Category',
+        'app.Teachers',
+        'app.Chapters',
     ];
 
     /**
@@ -51,17 +52,6 @@ class CoursesTableTest extends TestCase
         unset($this->Courses);
 
         parent::tearDown();
-    }
-
-    /**
-     * Test validationDefault method
-     *
-     * @return void
-     * @uses \App\Model\Table\CoursesTable::validationDefault()
-     */
-    public function testValidationDefault(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**

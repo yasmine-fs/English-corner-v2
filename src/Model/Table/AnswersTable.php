@@ -50,40 +50,6 @@ class AnswersTable extends Table
     }
 
     /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
-    public function validationDefault(Validator $validator): Validator
-    {
-        $validator
-            ->nonNegativeInteger('quizz_id')
-            ->notEmptyString('quizz_id');
-
-        $validator
-            ->scalar('question')
-            ->requirePresence('question', 'create')
-            ->notEmptyString('question');
-
-        $validator
-            ->scalar('student_answer')
-            ->allowEmptyString('student_answer');
-
-        $validator
-            ->scalar('correct_answer')
-            ->requirePresence('correct_answer', 'create')
-            ->notEmptyString('correct_answer');
-
-        $validator
-            ->boolean('is_correct')
-            ->requirePresence('is_correct', 'create')
-            ->notEmptyString('is_correct');
-
-        return $validator;
-    }
-
-    /**
      * Returns a rules checker object that will be used for validating
      * application integrity.
      *

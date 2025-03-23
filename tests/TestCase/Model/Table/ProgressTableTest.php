@@ -25,7 +25,7 @@ class ProgressTableTest extends TestCase
      */
     protected array $fixtures = [
         'app.Progress',
-        'app.Users',
+        'app.Students',
         'app.Courses',
     ];
 
@@ -51,17 +51,6 @@ class ProgressTableTest extends TestCase
         unset($this->Progress);
 
         parent::tearDown();
-    }
-
-    /**
-     * Test validationDefault method
-     *
-     * @return void
-     * @uses \App\Model\Table\ProgressTable::validationDefault()
-     */
-    public function testValidationDefault(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**

@@ -22,6 +22,8 @@
 
                         <th style="cursor: pointer;" scope="col"><i data-mdb-sort="title"
                                 class="datatable-sort-icon fas fa-arrow-up"></i>title</th>
+                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="content"
+                                class="datatable-sort-icon fas fa-arrow-up"></i>content</th>
                         <th style="cursor: pointer;" scope="col"><i data-mdb-sort="actions"
                                 class="datatable-sort-icon fas fa-arrow-up"></i> Actions</th>
                     </tr>
@@ -29,7 +31,8 @@
                 <tbody class="datatable-body">
                     <?php foreach ($Chapter as $chapters): ?>
                     <tr scope="row" data-mdb-index="0">
-                    <td style="" class="" data-mdb-field="Full_name" false=""><?= h($chapters->title) ?></td>
+                        <td style="" class="" data-mdb-field="title" false=""><?= h($chapters->title) ?></td>
+                        <td style="" class="" data-mdb-field="content" false=""><?= h($chapters->content) ?></td>
                         <td style="" class="" data-mdb-field="action" false="">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $chapters->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $chapters->id]) ?>

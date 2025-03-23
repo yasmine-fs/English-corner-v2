@@ -33,16 +33,16 @@
                     </tr>
                 </thead>
                 <tbody class="datatable-body">
-                    <?php foreach ($Teacher as $teachers): ?>
+                    <?php foreach ($Teacher as $teacher): ?>
                     <tr scope="row" data-mdb-index="0">
-                    <td style="" class="" data-mdb-field="Full_name" false=""><?= h($teachers->Full_name) ?></td>
-                        <td style="" class="" data-mdb-field="email" false=""><?= h($teachers->email) ?></td>
-                        <td style="" class="" data-mdb-field="password" false=""><?= h($teachers->password) ?></td>
-                        <td style="" class="" data-mdb-field="teaching_domain" false=""><?= h($teachers->teaching_domain) ?></td>
+                    <td style="" class="" data-mdb-field="Full_name" false=""><?= h($teacher->Full_name) ?></td>
+                        <td style="" class="" data-mdb-field="email" false=""><?= h($teacher->email) ?></td>
+                        <td style="" class="" data-mdb-field="password" false=""><?= h($teacher->password) ?></td>
+                        <td style="" class="" data-mdb-field="teaching_domain" false=""><?= h($teacher->teaching_domain) ?></td>
                         <td style="" class="" data-mdb-field="action" false="">
-                            <?= $this->Html->link(__('View'), ['action' => 'view', $teachers->id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $teachers->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $teachers->id], ['confirm' => __('Are you sure you want to delete # {0}?', $teachers->id)]) ?>
+                            <?= $this->Html->link(__('View'), ['action' => 'view', $teacher->id]) ?>
+                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $teacher->id]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $teacher->id], ['confirm' => __('Are you sure you want to delete # {0}?', $teacher->id)]) ?>
 
                         </td>
                     </tr>

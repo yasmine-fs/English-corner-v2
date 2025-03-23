@@ -27,13 +27,6 @@
             </div>
         </div>
         <div class="col-sm-4 m-1">
-            <!-- student_answers input -->
-            <div class="form-outline">
-                <input type="text" name="title" class="form-control" />
-                <label class="form-label" for="form8Example1">student_answers</label>
-            </div>
-        </div>
-        <div class="col-sm-4 m-1">
             <!-- status input -->
             <div class="form-outline">
                 <input type="text" name="status" class="form-control" />

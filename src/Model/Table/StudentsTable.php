@@ -54,22 +54,6 @@ class StudentsTable extends Table
     }
 
     /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
-    public function validationDefault(Validator $validator): Validator
-    {
-        $validator
-            ->nonNegativeInteger('user_id')
-            ->notEmptyString('user_id')
-            ->add('user_id', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
-
-        return $validator;
-    }
-
-    /**
      * Returns a rules checker object that will be used for validating
      * application integrity.
      *

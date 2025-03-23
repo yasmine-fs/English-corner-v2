@@ -14,7 +14,7 @@
         <?= $this->Form->create($user) ?>
         <div class="form-floating mb-3">
             <input type="text" id="fullName" name="full_name" class="form-control" placeholder="Full Name" pattern="[A-Za-z ]+" title="Only letters and spaces allowed" required>
-            <label for="fullName">Full Name</label>
+            <label for="Full_name">Full_name</label>
         </div>
         <div class="form-floating mb-3">
             <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required>
@@ -22,11 +22,11 @@
         </div>
         <div class="form-floating mb-3">
             <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-            <label for="password">Password</label>
+            <label for="password">password</label>
         </div>
         <div class="form-floating mb-3">
             <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Confirm Password" required>
-            <label for="confirmPassword">Confirm Password</label>
+            <label for="confirmPassword">confirmPassword</label>
         </div>
         <div class="d-grid">
             <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-info fw-bold py-2']) ?>
