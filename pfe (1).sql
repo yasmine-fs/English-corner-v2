@@ -75,19 +75,6 @@ CREATE TABLE `chapters` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `content`
---
-
-CREATE TABLE `content` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `text` text DEFAULT NULL,
-  `chapter_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `courses`
 --
 
@@ -151,6 +138,8 @@ CREATE TABLE `teachers` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `teaching_domain` enum('Technology','Business','Science','Mathematics','Engineering','Health & Wellness','Arts','Humanities','Languages','Social Sciences','Law') DEFAULT NULL
+   `certificate_path` VARCHAR(255) NULL,
+   `certificate_status` ENUM('pending', 'approved', 'rejected') DEFAULT 'pending';
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
